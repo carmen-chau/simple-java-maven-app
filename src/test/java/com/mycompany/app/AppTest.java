@@ -51,10 +51,10 @@ public class AppTest
 
     // New test cases for method: containsDuplicates
     @Test
-    public void sampleDuplicateFails1(){
+    public void sampleNonDuplicate(){
         int[] samplenewList = new int[]{1,2,9,20,0,8,7};
         App app = new App(samplenewList);
-        boolean expectedValue = true; // false is the correct choice. set to true to deliberately make test fail
+        boolean expectedValue = false; // false is the correct choice. set to true to deliberately make test fail
         boolean actualValue = app.containsDuplicates();
         assertEquals(expectedValue, actualValue);
 
