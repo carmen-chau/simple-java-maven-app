@@ -9,17 +9,32 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 public class AppTest
 {
+    // Given test case from starter code
     @Test
     public void testAppConstructor() {
-        App app1 = new App();
-        App app2 = new App();
+        int[] samplenewList = new int[]{1}; // Just a dummy list, not really needed.
+        App app1 = new App(samplenewList);
+        App app2 = new App(samplenewList);
         assertEquals(app1.getMessage(), app2.getMessage());
     }
 
+    // Given test case from starter code
     @Test
     public void testAppMessage()
     {
-        App app = new App();
+        int[] samplenewList = new int[]{1}; // Just a dummy list, not really needed.
+        App app = new App(samplenewList);
         assertEquals("Hello World!", app.getMessage());
+    }
+
+    // New test cases for method: containsDuplicates
+    @Test
+    public void emptyArrayCase(){
+        int[] samplenewList = new int[]{1};
+        App app = new App(samplenewList);
+        boolean expectedValue = false;
+        boolean actualValue = app.containsDuplicates();
+        assertEquals(expectedValue, actualValue);
+        
     }
 }
