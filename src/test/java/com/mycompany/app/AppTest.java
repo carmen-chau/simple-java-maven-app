@@ -54,7 +54,7 @@ public class AppTest
     public void sampleDuplicateFails1(){
         int[] samplenewList = new int[]{1,2,9,20,0,8,7};
         App app = new App(samplenewList);
-        boolean expectedValue = false; // false is the correct choice. set to true to deliberately make test fail
+        boolean expectedValue = true; // false is the correct choice. set to true to deliberately make test fail
         boolean actualValue = app.containsDuplicates();
         assertEquals(expectedValue, actualValue);
 
