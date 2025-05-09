@@ -26,5 +26,10 @@ pipeline {
             }
         }
     }
+    post {
+        failure {
+              echo 'Pipeline failed. Please check the error logs for more details.'
+        }
+    }
 }
 
