@@ -28,7 +28,7 @@ pipeline {
     }
     post {
         failure {
-              echo '❌Pipeline failed. Please check the error logs for more details.'
+              echo 'Pipeline failed. Please check the error logs (or scroll above) for more details.'
         }
     }
 }
