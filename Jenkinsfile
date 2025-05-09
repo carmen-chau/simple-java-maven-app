@@ -14,6 +14,7 @@ pipeline {
         stage ('Debug Environment'){
            steps{
                 echo "The token value for SAMPLE_ENV_VARIABLE is: ${env.SAMPLE_ENV_VARIABLE ?: 'Not defined'}"
+                echo "The token value for SAMPLE_NON_DEFINED_ENV_VARIABLE is: ${env.SAMPLE_NON_DEFINED_ENV_VARIABLE ?: 'Not defined'}"
                 echo "Finished the debugging step"
            }
         }
