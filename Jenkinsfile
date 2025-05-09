@@ -4,7 +4,10 @@
 pipeline {
     agent any // Execute this deployment pipeline on any available Jenkin node / job
     triggers {
-            cron('30 14 * * *')  // 14:30 = 2:30 PM every day
+            cron('''
+            TZ=Canada/Eastern
+             */5 * * * *
+            ''')  // 14:30 = 2:30 PM every day
         }
     stages {
         stage('Build') {  // Defines a formal stage in the pipeline called "Build"
