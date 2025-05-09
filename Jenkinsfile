@@ -10,6 +10,13 @@ pipeline {
 //             ''')  // 14:30 = 2:30 PM every day
 //         }
     stages {
+
+        stage ('Debug Environment'){
+           steps{
+                echo "The token value for SAMPLE_ENV_VARIABLE is: ${env.SAMPLE_ENV_VARIABLE}"
+                echo "Finished the debugging step"
+           }
+        }
         stage('Build') {  // Defines a formal stage in the pipeline called "Build"
             steps {
                 sh 'mvn -B -DskipTests clean package' // Runs the Maven command to build Java applications without running tests
