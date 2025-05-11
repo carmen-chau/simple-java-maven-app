@@ -51,12 +51,29 @@ pipeline {
             }
         }
 
-        stage('Deliver'){
+        stage('Deliver') {
             steps {
-                sh './jenkins/scripts/deliver.sh'
+                script {
+                    // Phase 1: We build a container based on the DockerFile
+                    // Note 1: We used to use the deliver.sh script, but now, we are attempting to use the dockerfile
+                    // Note 2: For docker build, -t denote us giving a custom name to the image
+                    echo 'Building Docker image from Dockerfile...'
+                    sh """
+                        docker build \
+                            --build-arg JAR_FILE_PATH=${env.JAR_FILE_PATH} \
+                            -t sample-maven-app-v1-${env.VERSION} .
+                    """
+
+                   // Phase 2: Now that we have built a container, we now construct an image to run the .jar file
+                    echo 'Running Docker container to execute the JAR...'
+                    sh """
+                        docker run --rm \
+                            -e JAR_FILE_PATH=${env.JAR_FILE_PATH} \
+                            sample-maven-app-v1-${env.VERSION}
+                    """
+                }
             }
         }
-    }
 
     post { // Normally, these steps would be running near the end of the pipeline execution
 
