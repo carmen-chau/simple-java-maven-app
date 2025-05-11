@@ -74,7 +74,7 @@ pipeline {
                 }
             }
         }
-
+    }
     post { // Normally, these steps would be running near the end of the pipeline execution
 
         success {
