@@ -24,8 +24,11 @@ public class App {
         if (methodSelection.equals("arrayAsString")){
             System.out.println(app.getArrayAsString());
         }
-        else{
+        else if (methodSelection.equals("arrayAsList")){
             System.out.println(app.containsDuplicates());
+        }
+        else {
+            System.out.println("Invalid method selection");
         }
     }
 
