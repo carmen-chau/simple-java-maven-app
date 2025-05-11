@@ -2,9 +2,7 @@
 
 // Below, you can find the deployment pipeline's content
 pipeline {
-    agent { // Execute this deployment pipeline on any available Jenkin node / job that has docker 
-        label 'docker-enabled'
-    }
+    agent any // Execute this deployment pipeline on any available Jenkin node / job
 //     triggers {
 //             cron('''
 //             TZ=Canada/Eastern
