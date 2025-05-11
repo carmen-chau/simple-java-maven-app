@@ -7,21 +7,30 @@ import java.util.*;
  */
 public class App {
 
-    private static final String MESSAGE = "Hello World!";
     private int[] nums;
 
     public App(int[] nums) {
         this.nums = nums;
     }
 
-    // Given method from starter code
-    public static void main(String[] args) {
-        System.out.println(MESSAGE);
-    }
+    // Note: Omitted main method since we don't care whether this class is runnable on its own via terminal line or not
 
     // Given method from starter code
-    public String getMessage() {
-        return MESSAGE;
+    // Key Idea: Using the Array.toString() method doesn't work.
+    // Reason: This method returns a string representation of THE ARRAY OBJECT itself
+    public String getArrayAsString() {
+        StringBuilder arrayPrintout = new StringBuilder("["); // Note: Since we are mutating a string, using StringBuilder is more efficient
+        for (int i = 0; i < nums.length; i++){
+            int currentNum = nums[i];
+            String numAsString = String.valueOf(currentNum);
+            arrayPrintout.append(numAsString);
+            if (i < nums.length - 1){
+                arrayPrintout.append(",");
+            }
+        }
+        arrayPrintout.append("]");
+        return arrayPrintout.toString();
+
     }
 
     // Java solution to the problem: Contains Duplicates

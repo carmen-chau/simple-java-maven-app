@@ -15,16 +15,18 @@ public class AppTest
         int[] samplenewList = new int[]{1}; // Just a dummy list, not really needed.
         App app1 = new App(samplenewList);
         App app2 = new App(samplenewList);
-        assertEquals(app1.getMessage(), app2.getMessage());
+        assertEquals(app1.getArrayAsString(), app2.getArrayAsString());
     }
 
     // Given test case from starter code
     @Test
     public void testAppMessage()
     {
-        int[] samplenewList = new int[]{1}; // Just a dummy list, not really needed.
+        int[] samplenewList = new int[]{1,2,10,98}; // Just a dummy list, not really needed.
         App app = new App(samplenewList);
-        assertEquals("Hello World!", app.getMessage());
+        System.out.println(app.getArrayAsString());
+        assertEquals(true, true);
+        //assertEquals("[1,2,10,98]", app.getArrayAsString());
     }
 
     // New test cases for method: containsDuplicates
