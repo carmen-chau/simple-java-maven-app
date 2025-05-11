@@ -11,13 +11,13 @@ pipeline {
 //         }
     stages {
 
-        stage ('Debug Environment'){
-           steps{
-                echo "The token value for SAMPLE_ENV_VARIABLE is: ${env.SAMPLE_ENV_VARIABLE ?: 'Not defined'}"
-                echo "The token value for SAMPLE_NON_DEFINED_ENV_VARIABLE is: ${env.SAMPLE_NON_DEFINED_ENV_VARIABLE ?: 'Not defined'}"
-                echo "Finished the debugging step"
-           }
-        }
+//         stage ('Debug Environment'){
+//            steps{
+//                 echo "The token value for SAMPLE_ENV_VARIABLE is: ${env.SAMPLE_ENV_VARIABLE ?: 'Not defined'}"
+//                 echo "The token value for SAMPLE_NON_DEFINED_ENV_VARIABLE is: ${env.SAMPLE_NON_DEFINED_ENV_VARIABLE ?: 'Not defined'}"
+//                 echo "Finished the debugging step"
+//            }
+//         }
         stage('Build') {  // Defines a formal stage in the pipeline called "Build"
             steps {
                 sh 'mvn -B -DskipTests clean package' // Runs the Maven command to build Java applications without running tests
