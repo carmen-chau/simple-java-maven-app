@@ -16,10 +16,19 @@ public class App {
     // Note: Omitted main method since we don't care whether this class is runnable on its own via terminal line or not
 
     public static void main(String[] args) {
+        // Defining an instance of a new App object
         App app = new App(new int[]{1,2,3,4,5,6,7,8,9});
-        System.out.println(app.getArrayAsString());
-        System.out.println(app.containsDuplicates());
+
+        // Fetching the value of the environment variable
+        String methodSelection = System.getenv("METHOD_SELECTION");
+        if (methodSelection.equals("arrayAsString")){
+            System.out.println(app.getArrayAsString());
+        }
+        else{
+            System.out.println(app.containsDuplicates());
+        }
     }
+
     // Given method from starter code
     // Key Idea: Using the Array.toString() method doesn't work.
     // Reason: This method returns a string representation of THE ARRAY OBJECT itself
