@@ -1,4 +1,4 @@
-package com.mycompany.app;
+package com.fakeCompany.app;
 
 import org.junit.jupiter.api.Test;
 
@@ -24,9 +24,7 @@ public class AppTest
     {
         int[] samplenewList = new int[]{1,2,10,98}; // Just a dummy list, not really needed.
         App app = new App(samplenewList);
-        System.out.println(app.getArrayAsString());
-        assertEquals(true, true);
-        //assertEquals("[1,2,10,98]", app.getArrayAsString());
+        assertEquals("[1,2,10,98]", app.getArrayAsString());
     }
 
     // New test cases for method: containsDuplicates
