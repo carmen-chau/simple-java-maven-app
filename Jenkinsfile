@@ -23,6 +23,22 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package' // Runs the Maven command to build Java applications without running tests
             }
         }
+
+        stage ('Extract Metadata Content'){
+            steps {
+                script {
+                    env.ARTIFACT_ID = sh(script: "mvn help:evaluate -Dexpression=project.artifactId -q -DforceStdout", returnStdout: true).trim()
+                    env.VERSION = sh(script: "mvn help:evaluate -Dexpression=project.version -q -DforceStdout", returnStdout: true).trim()
+                    env.JAR_FILE_PATH = "target/${env.ARTIFACT_ID}-${env.VERSION}.jar"
+
+                    echo "[DEBUGGING] Artifact ID is: ${env.ARTIFACT_ID}"
+                    echo "[DEBUGGING] Version is: ${env.VERSION}"
+                    echo "[DEBUGGING] Jar file path is: ${env.JAR_FILE_PATH}"
+
+                }
+            }
+        }
+
         stage('Test'){ // Defines another formal stage in the pipeline called Test
             steps {
                 sh 'mvn test' // Executes a Maven command that runs all the unit tests 
@@ -34,6 +50,7 @@ pipeline {
                 }
             }
         }
+
         stage('Deliver'){
             steps {
                 sh './jenkins/scripts/deliver.sh'
