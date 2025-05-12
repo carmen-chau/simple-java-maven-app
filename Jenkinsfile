@@ -2,9 +2,7 @@
 
 // Below, you can find the deployment pipeline's content
 pipeline {
-    agent { // Execute this deployment pipeline on any available Jenkin node / job
-         dockerfile true
-    }
+    agent any // Execute this deployment pipeline on any available Jenkin node / job
 
     stages {
 
@@ -41,21 +39,21 @@ pipeline {
             }
         }
 
-        stage('Deliver') {
-            steps {
-                script {
-                    // Phase 1: We build a container based on the DockerFile
-                    // Note 1: We used to use the deliver.sh script, but now, we are attempting to use the dockerfile
-                    // Note 2: For docker build, -t denote us giving a custom name to the image
-                    // Note 3: In this example, the jar path would be: target/sample-app-1.0-SNAPSHOT.jar
-                    // Note 4: In this example, the image name would be: sample-maven-app-v1-snapshot
-                        // We cannot use capital SNAPSHOT due to naming convention rules
-                    echo 'Building Docker image from Dockerfile...'
-                    sh """
-                        docker build \
-                            --build-arg JAR_FILE_PATH=${env.JAR_FILE_PATH} \
-                            -t sample-maven-app-v1-${env.VERSION} .
-                    """
+//         stage('Deliver') {
+//             steps {
+//                 script {
+//                     // Phase 1: We build a container based on the DockerFile
+//                     // Note 1: We used to use the deliver.sh script, but now, we are attempting to use the dockerfile
+//                     // Note 2: For docker build, -t denote us giving a custom name to the image
+//                     // Note 3: In this example, the jar path would be: target/sample-app-1.0-SNAPSHOT.jar
+//                     // Note 4: In this example, the image name would be: sample-maven-app-v1-snapshot
+//                         // We cannot use capital SNAPSHOT due to naming convention rules
+//                     echo 'Building Docker image from Dockerfile...'
+//                     sh """
+//                         docker build \
+//                             --build-arg JAR_FILE_PATH=${env.JAR_FILE_PATH} \
+//                             -t sample-maven-app-v1-${env.VERSION} .
+//                     """
 //
 //                    // Phase 2: Now that we have built a container, we now construct an image to run the .jar file
 //                    // Note: This section is commented out since we would pass the Docker image to Redhat Openshift to run, so no need to build the container here.
@@ -65,10 +63,10 @@ pipeline {
 //                             -e JAR_FILE_PATH=${env.JAR_FILE_PATH} \
 //                             sample-maven-app-v1-${env.VERSION}
 //                     """
-                }
-            }
-        }
-    }
+//                 }
+//             }
+//         }
+//     }
     post { // Normally, these steps would be running near the end of the pipeline execution
 
         success {
