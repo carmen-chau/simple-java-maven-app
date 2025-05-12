@@ -22,5 +22,7 @@ set +x
 
 echo 'The following command runs and outputs the execution of your Java'
 echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
+echo 'Note: Recall that Jenkins clones the project directory folder. So the jar file would be located in .../simple-java-maven-app/target
+where ... denotes the path to the jenkins agent.'
 set -x
 java -jar target/${NAME}-${VERSION}.jar
