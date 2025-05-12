@@ -2,7 +2,9 @@
 
 // Below, you can find the deployment pipeline's content
 pipeline {
-    agent any // Execute this deployment pipeline on any available Jenkin node / job
+    agent { // Execute this deployment pipeline on any available Jenkin node / job
+        label 'docker-ssh-jenkins-agent'
+    }
 //     triggers {
 //             cron('''
 //             TZ=Canada/Eastern
