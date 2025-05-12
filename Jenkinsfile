@@ -7,6 +7,10 @@
 pipeline {
     agent any // Execute this deployment pipeline on any available Jenkin node / job
 
+     environment {
+            METHOD_SELECTION = credentials('METHOD_SELECTION') // Pulls secret securely
+     }
+
     stages {
 
         stage('Build') {  // Defines a formal stage in the pipeline called "Build"
