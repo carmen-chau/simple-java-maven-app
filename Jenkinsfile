@@ -7,6 +7,8 @@
 pipeline {
     agent any // Execute this deployment pipeline on any available Jenkin node / job
 
+     // This section of the pipeline is in accordance to managing secrets in Jenkin pipelines: https://www.jenkins.io/doc/book/using/using-credentials/
+     // This section is needed because it PASSES values of credentials to the OS. That way, when the .java file utilizes methods like System.getenv(), the value of the env variable actually gets read.
      environment {
             METHOD_SELECTION = credentials('METHOD_SELECTION') // Pulls secret securely
      }
