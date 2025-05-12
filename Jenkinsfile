@@ -39,6 +39,28 @@ pipeline {
             }
         }
 
+         stage('Deliver') {
+                    steps {
+                        sh './jenkins/scripts/deliver.sh'
+                    }
+          }
+
+    post { // Normally, these steps would be running near the end of the pipeline execution
+
+        success {
+            echo 'Everything completed fine!'
+        }
+
+
+        failure {
+              echo 'Pipeline failed. Please check the error logs (or scroll above) for more details.'
+        }
+    }
+   }
+}
+
+
+
 //         stage('Deliver') {
 //             steps {
 //                 script {
@@ -67,16 +89,3 @@ pipeline {
 //             }
 //         }
 //     }
-    post { // Normally, these steps would be running near the end of the pipeline execution
-
-        success {
-            echo 'Everything completed fine!'
-        }
-
-
-        failure {
-              echo 'Pipeline failed. Please check the error logs (or scroll above) for more details.'
-        }
-    }
-}
-
