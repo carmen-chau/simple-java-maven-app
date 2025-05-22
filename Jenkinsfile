@@ -15,6 +15,12 @@ pipeline {
 
     stages {
 
+         stage('Github Branch Validation') {  // Defines a formal stage in the pipeline called "Build"
+                steps {
+                    echo 'You should now be using the correct branch' // Runs the Maven command to build Java applications without running tests
+                }
+            }
+
         stage('Build') {  // Defines a formal stage in the pipeline called "Build"
             steps {
                 sh 'mvn -B -DskipTests clean package' // Runs the Maven command to build Java applications without running tests
